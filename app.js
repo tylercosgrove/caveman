@@ -31,7 +31,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
   });
 
-app.listen(3001, () => { 
+app.listen(process.env.PORT || 3001, () => { 
     console.log('listening on port 3001'); 
 }); 
 
