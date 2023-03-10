@@ -33,12 +33,24 @@ app.use(helmet());
 app.use(cors(corsOptions))
 
 
+app.use(express.static(path.join(__dirname, '..', 'client/build')));
 
 
-
-app.get('/', (req, res) => { 
+/*app.get('/', (req, res) => { 
     res.send("Hey there!"); 
+});*/
+
+
+app.use(express.static(path.join(__dirname, '..', 'client/build')));
+// Root Redirects to the pre-build assets
+app.get('/', function(req,res){
+  res.sendFile(path.join(__dirname, '..', 'client/build'));
 });
+// Any Page Redirects to the pre-build assets folder index.html that // will load the react app
+app.get('*', function(req,res){
+  res.sendFile(path.join(__dirname, '..', 'client/build/index.html'));
+});
+
 
 /*app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../openai-client/build', 'index.html'));
@@ -52,7 +64,7 @@ app.post('/query', async (req, res) => {
 /*app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
   });*/
-
+/*
 if (process.env.NODE_ENV === 'production') {
     // Serve any static files
     app.use(express.static(path.join(__dirname, 'client/build')));
@@ -61,7 +73,7 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
     });
 }
-
+*/
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => { 
     console.log('listening on port ' + PORT); 
