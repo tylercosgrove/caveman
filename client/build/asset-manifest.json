@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.89f8c5d4.css",
+    "main.js": "/static/js/main.abb22ff5.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/caveman2.svg": "/static/media/caveman2.46c6d66cb7257c676dca4c878a9edeb8.svg",
+    "static/media/caveman1.svg": "/static/media/caveman1.4540f65f835bb1d922ff7900c2339d76.svg",
+    "index.html": "/index.html",
+    "main.89f8c5d4.css.map": "/static/css/main.89f8c5d4.css.map",
+    "main.abb22ff5.js.map": "/static/js/main.abb22ff5.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.89f8c5d4.css",
+    "static/js/main.abb22ff5.js"
+  ]
+}
