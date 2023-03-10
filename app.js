@@ -31,8 +31,8 @@ app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
   });
 
-app.listen(process.env.PORT || 3001, () => { 
-    console.log('listening on port ' + (process.env.PORT || 3001)); 
+app.listen(process.env.PORT || 8080, () => { 
+    console.log('listening on port ' + (process.env.PORT || 8080)); 
 }); 
 
 const testFunc = async (prompt) => {
