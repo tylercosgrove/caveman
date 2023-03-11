@@ -14,6 +14,8 @@ function App() {
   const [currChat, setCurrChate] = useState([]);
   const textAreaRef = useRef(null);
 
+  const scrollableDivRef = useRef(null);
+
   useAutosizeTextArea(textAreaRef.current, prompt);
 
   useEffect(() => {
@@ -29,6 +31,12 @@ function App() {
       }
     }
   }, [text]);
+
+  useEffect(() => {
+    if (scrollableDivRef.current) {
+      scrollableDivRef.current.scrollTop = scrollableDivRef.current.scrollHeight;
+    }
+  }, [currChat.length]);
 
   const handleChange = (event) => {
     const val = event.target?.value;
@@ -65,34 +73,49 @@ function App() {
   }
 
   const getHistory = () => {
-    return <ul>
-      {currChat.slice(0, -1).reverse().map(x => <li class="white"><span className="bold">{x.role == "user" ? "You" : "Grug"}</span>: {x.content}</li>)}
-    </ul>;
+    return <>
+      {currChat.slice(0).map(x => 
+        <div id="message-container">
+          <div className={x.role == "user" ? "user" : "grug"}>
+            {x.content}
+          </div>
+        </div>
+      )}
+    </>;
   }
 
-  return (
-    <div className="main">
+/**
+ * <p class="white">Grug says:</p>
+            <p id="output">{text}</p>
+ */
+
+  return (<>
+    <div id="header">
       <h1 class="white">Talk to AI Caveman</h1>
       <div id="clear-container">
         <button onClick={clearHistory}>Clear message history</button>
       </div>
+    </div>
+    <div className="main">
+      
+
+
+      <div id="response-container">
+          <img id="grug-image" src={image} />
+          
+          <div ref={scrollableDivRef} id="output-container">
+            {getHistory()}
+          </div>
+      </div>
+
 
       <div id="input-container">
         <textarea id="new-note" onChange={handleChange} placeholder="Prompt:" rows={1} value={prompt} ref={textAreaRef}/>
         <button id="go" onClick={askChat}>Go</button>
       </div>
 
-      <div id="response-container">
-          <img id="grug-image" src={image} />
-
-          <div id="output-container">
-            <p class="white">Grug says:</p>
-            <p id="output">{text}</p>
-            {getHistory()}
-          </div>
-      </div>
-
     </div>
+    </>
   );
 }
 
