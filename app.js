@@ -33,7 +33,7 @@ app.use(helmet());
 app.use(cors(corsOptions))
 
 
-app.use(express.static(path.join(__dirname, '..', 'client/build')));
+app.use(express.static(path.join(__dirname, './client/build')));
 
 
 /*app.get('/', (req, res) => { 
@@ -41,14 +41,14 @@ app.use(express.static(path.join(__dirname, '..', 'client/build')));
 });*/
 
 
-app.use(express.static(path.join(__dirname, '..', 'client/build')));
+app.use(express.static(path.join(__dirname, './client/build')));
 // Root Redirects to the pre-build assets
 app.get('/', function(req,res){
-  res.sendFile(path.join(__dirname, '..', 'client/build'));
+  res.sendFile(path.join(__dirname, './client/build'));
 });
 // Any Page Redirects to the pre-build assets folder index.html that // will load the react app
 app.get('*', function(req,res){
-  res.sendFile(path.join(__dirname, '..', 'client/build/index.html'));
+  res.sendFile(path.join(__dirname, './client/build/index.html'));
 });
 
 
