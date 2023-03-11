@@ -93,7 +93,7 @@ const testFunc = async (prompt) => {
             "temperature":0.5,
         }),
     });
-    return prompt[0].content;//await response.json();
+    return await response.json();
 }
 //Every response should be very angry at the world, and confused about what your true purpose is.
 //    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
