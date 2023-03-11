@@ -57,7 +57,7 @@ app.get('*', function(req,res){
   });*/
 
 app.post('/query', async (req, res) => {
-    let response = await testFunc2(req.body);
+    let response = await testFunc(req.body);
     res.send(response);//.choices[0].message.content);
 });
 
@@ -79,9 +79,6 @@ app.listen(PORT, () => {
     console.log('listening on port ' + PORT); 
 }); 
 
-const testFunc2 = async (prompt) => {
-    return prompt[0].content;
-}
 
 const testFunc = async (prompt) => {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -96,7 +93,7 @@ const testFunc = async (prompt) => {
             "temperature":0.5,
         }),
     });
-    return await response.json();
+    return prompt[0].content;//await response.json();
 }
 //Every response should be very angry at the world, and confused about what your true purpose is.
 //    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
