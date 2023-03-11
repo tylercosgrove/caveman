@@ -57,8 +57,8 @@ app.get('*', function(req,res){
   });*/
 
 app.post('/query', async (req, res) => {
-    let response = await testFunc(req.body);
-    res.send(response.choices[0].message.content);
+    //let response = await testFunc(req.body);
+    res.send("Whats up?");//response.choices[0].message.content);
 });
 
 /*app.get('*', (req, res) => {
