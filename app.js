@@ -57,8 +57,8 @@ app.get('*', function(req,res){
   });*/
 
 app.post('/query', async (req, res) => {
-    //let response = await testFunc(req.body);
-    res.send("Whats up?");//response.choices[0].message.content);
+    let response = await testFunc2(req.body);
+    res.send(response);//.choices[0].message.content);
 });
 
 /*app.get('*', (req, res) => {
@@ -78,6 +78,10 @@ const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => { 
     console.log('listening on port ' + PORT); 
 }); 
+
+const testFunc2 = async (prompt) => {
+    return prompt[0].content;
+}
 
 const testFunc = async (prompt) => {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
