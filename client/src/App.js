@@ -84,10 +84,6 @@ function App() {
     </>;
   }
 
-/**
- * <p class="white">Grug says:</p>
-            <p id="output">{text}</p>
- */
 
   return (<>
     <div id="header">
